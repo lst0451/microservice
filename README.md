@@ -52,3 +52,9 @@ PostgreSQL            →  [Payment Service] → Kafka
 业务逻辑相对简单，容易扩展和展示。
 使用的技术栈全面，涵盖常见的微服务架构实践。
 可以根据需要逐步扩展功能，例如加入缓存、API Gateway 等。
+
+在项目的根目录下（microservice）执行
+mvn clean package -DskipTests 打包
+然后执行 
+docker-compose up --build 启动项目
+docker-compose down(删除镜像)

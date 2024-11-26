@@ -1,4 +1,4 @@
-package io.lst.demo;
+package io.lst.demo.userservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
