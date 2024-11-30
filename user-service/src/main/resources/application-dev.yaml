@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/userdb
+    url: jdbc:postgresql://localhost:15432/userdb
     username: lst
     password: 123456
     driver-class-name: org.postgresql.Driver
@@ -11,3 +11,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  kafka:
+    topic:
+      user-registration: user_registration
+    bootstrap-servers: localhost:19092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

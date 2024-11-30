@@ -1,5 +1,33 @@
-version: '3.8'
+#version: '3.8'
+# 使用 docker-compose up -d postgres kafka zookeeper 只启动这三个服务
+# 使用下面这行明令查看 docker 容器中 kafka 的消息
+#docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic user_registration --from-beginning
+
 services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:19092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"   # 内部 Kafka 通信
+      - "19092:19092" # 外部宿主机访问
+    depends_on:
+      - zookeeper
+
+
   postgres:
     image: postgres:15
     container_name: user-service-postgres
@@ -23,8 +51,10 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/userdb
       SPRING_DATASOURCE_USERNAME: lst
       SPRING_DATASOURCE_PASSWORD: 123456
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
     depends_on:
       - postgres
+      - kafka
 
 volumes:
   postgres_data:
