@@ -1,8 +1,12 @@
-package io.lst.demo.userservice.event;
+package io.lst.demo.common.event;
 
 public class UserRegisteredEvent {
     private String username;
     private String email;
+
+    //必须要有无参构造方法，否则 jackson 无法反序列化
+    public UserRegisteredEvent() {
+    }
 
     public UserRegisteredEvent(String username, String email) {
         this.username = username;
@@ -23,5 +27,12 @@ public class UserRegisteredEvent {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String toString() {
+        return "UserRegisteredEvent{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

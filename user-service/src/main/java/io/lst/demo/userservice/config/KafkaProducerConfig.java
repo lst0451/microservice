@@ -1,6 +1,6 @@
 package io.lst.demo.userservice.config;
 
-import io.lst.demo.userservice.event.UserRegisteredEvent;
+import io.lst.demo.common.event.UserRegisteredEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;

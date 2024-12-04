@@ -1,6 +1,6 @@
 package io.lst.demo.userservice.kafka;
 
-import io.lst.demo.userservice.event.UserRegisteredEvent;
+import io.lst.demo.common.event.UserRegisteredEvent;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

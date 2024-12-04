@@ -1,7 +1,7 @@
 package io.lst.demo.userservice.service;
 
+import io.lst.demo.common.event.UserRegisteredEvent;
 import io.lst.demo.userservice.entity.User;
-import io.lst.demo.userservice.event.UserRegisteredEvent;
 import io.lst.demo.userservice.kafka.KafkaProducerService;
 import io.lst.demo.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
