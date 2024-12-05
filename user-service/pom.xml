@@ -8,7 +8,6 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.lst.demo</groupId>
     <artifactId>user-service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>user-service</name>

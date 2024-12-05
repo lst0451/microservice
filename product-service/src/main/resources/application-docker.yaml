@@ -1,0 +1,13 @@
+server:
+  port: 18082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/productdb
+    username: lst
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
