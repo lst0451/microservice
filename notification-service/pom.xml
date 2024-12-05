@@ -6,7 +6,7 @@
     <artifactId>notification-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>Notification Service</name>
+    <name>notification-service</name>
 
     <parent>
         <groupId>io.lst</groupId>

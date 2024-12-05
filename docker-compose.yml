@@ -56,5 +56,19 @@ services:
       - postgres
       - kafka
 
+  product-service:
+    build:
+      context: ./product-service
+    container_name: product-service
+    ports:
+      - "18082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/productdb
+      SPRING_DATASOURCE_USERNAME: lst
+      SPRING_DATASOURCE_PASSWORD: 123456
+    depends_on:
+      - postgres
+
+
 volumes:
   postgres_data:
