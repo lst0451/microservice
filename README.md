@@ -102,3 +102,30 @@ docker-compose down(删除镜像)
 - `kubectl exec -it deployment/postgres -- psql -U lst`
 - `CREATE DATABASE userdb;`
 - `CREATE DATABASE productdb;`
+
+### 启动项目
+- 确保Docker Desktop在运行
+- 构建项目:
+- `mvn clean package -DskipTests`
+
+####  启动服务:
+- `docker-compose up -d`
+- 这会启动以下服务：
+`Zookeeper (Kafka依赖)`
+`Kafka`
+`PostgreSQL数据库`
+`user-service`
+`product-service`
+
+- 检查服务是否正常运行:
+`docker ps`
+
+#### 访问服务
+
+- 用户服务:
+http://localhost:18081/api/users
+- 产品服务: http://localhost:18082/api/products
+
+
+#### 关闭服务
+- `docker-compose down`
