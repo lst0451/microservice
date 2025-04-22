@@ -69,6 +69,18 @@ services:
     depends_on:
       - postgres
 
+  notification-service:
+    build:
+      context: ./notification-service
+    container_name: notification-service
+    ports:
+      - "18083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_KAFKA_TOPIC_USER_REGISTRATION: user_registration
+    depends_on:
+      - kafka
 
 volumes:
   postgres_data:
