@@ -1,5 +1,8 @@
 package io.lst.demo.common.event;
 
+import lombok.Data;
+
+@Data
 public class UserRegisteredEvent {
     private String username;
     private String email;
@@ -13,21 +16,6 @@ public class UserRegisteredEvent {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String toString() {
         return "UserRegisteredEvent{" +
